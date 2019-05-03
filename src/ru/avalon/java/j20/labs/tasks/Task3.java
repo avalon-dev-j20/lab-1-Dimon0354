@@ -1,6 +1,7 @@
 package ru.avalon.java.j20.labs.tasks;
 
 import ru.avalon.java.j20.labs.Task;
+import ru.avalon.java.j20.labs.models.Fibonacci;
 
 import java.util.Iterator;
 
@@ -13,6 +14,19 @@ public class Task3 implements Task {
 
     @Override
     public void run() {
+    	
+    	Fibonacci fibMine = new Fibonacci();
+    	int numbersOfFb = Fibonacci.getamotOfNumbers();
+    	int sumOfFb = 0;
+
+    	Fibonacci.setamotOfNumbers(20);
+    	
+    	for(int i : fibMine) {
+    		sumOfFb = sumOfFb + i;
+    	}
+    	
+    	System.out.println("Task3.run(), sum of first 20y numbers = " + sumOfFb);
+    	
         /*
          * TODO(Студент): Выполнить задание №3
          *

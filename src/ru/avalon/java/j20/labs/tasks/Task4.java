@@ -15,9 +15,11 @@ public class Task4 implements Task {
      */
     @Override
     public void run() {
-        Person a = new Person("Иван", "Иванов");
-        Person b = new Person("Иван", "Иванов");
+        Person a = new Person("Вася", "Иванов");
+        Person b = new Person("Вася", "Иванов");
+        // Подставив разные имена и фамилии видим результат - задание выполнено.
         boolean isEqual = a.equals(b);
+        System.out.println("Task4.run(), chech for equality, isEqual = " + isEqual);
         /*
          * TODO(Студент): Выполните задание №4
          *

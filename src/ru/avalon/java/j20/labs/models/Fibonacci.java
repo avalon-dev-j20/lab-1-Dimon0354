@@ -18,12 +18,24 @@ import java.util.Iterator;
  */
 public class Fibonacci implements Iterable<Integer> {
 
+	static int amotOfNumbers;
+	
+	public static void setamotOfNumbers(int numb) {
+		amotOfNumbers = numb;
+	}
+	
+	public static int getamotOfNumbers() {
+		return amotOfNumbers;
+	}
+	
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
     private static class FibonacciIterator implements Iterator<Integer> {
-
+    	int first = 0;
+    	int second = 1;
+    	int counter = 0;
         /**
          * Определяет, есть ли следующее значение
          * последовательности чисел Фибоначчи.
@@ -34,7 +46,7 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return counter < amotOfNumbers;
         }
 
         /**
@@ -45,7 +57,11 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            int nextVal = first + second;
+            first = second;
+            second = nextVal;
+            counter++;
+            return nextVal;
         }
     }
 
