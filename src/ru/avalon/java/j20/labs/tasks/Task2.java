@@ -1,6 +1,7 @@
 package ru.avalon.java.j20.labs.tasks;
 
 import ru.avalon.java.j20.labs.Task;
+import ru.avalon.java.j20.labs.models.Point;
 
 /**
  * Задание №2.
@@ -8,12 +9,17 @@ import ru.avalon.java.j20.labs.Task;
  * <p>Тема: "Создание обобщённых классов".
  */
 public class Task2 implements Task {
+	
+	public Point minePoint = new Point((float) 20.5, 5);
 
     /**
      * {@inheritDoc}
      */
     @Override
     public void run() {
+    	
+    	double distBtwPoints = minePoint.distanceTo(new Point(4.9, 10));
+    	System.out.println("Task2.run(), distBtwPoints = " + distBtwPoints);
         /*
          * TODO(Студент): Выполнять задание №2
          *
@@ -34,5 +40,8 @@ public class Task2 implements Task {
          * 4. С использованием отладчика проверьте корректность
          *    работы программы.
          */
+    	
+    	
+    	
     }
 }

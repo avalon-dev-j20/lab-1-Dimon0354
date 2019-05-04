@@ -1,8 +1,10 @@
 package ru.avalon.java.j20.labs.tasks;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
 import ru.avalon.java.j20.labs.models.Numbers;
+
 
 /**
  * Задание №1.
@@ -12,22 +14,35 @@ import ru.avalon.java.j20.labs.models.Numbers;
  * <p>В рамках задания требуется описать и выполнить
  * несколько методов, обобщённых с указанной точностью.
  */
+
+
 public class Task1 implements Task {
 
     /**
      * Фабрика, создающая массивы случайных чисел.
      */
     private final RandomArrayFactory arrayFactory = new RandomArrayFactory();
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
     public void run() {
+    	System.out.println("Task1.run() arrayFactory - " + arrayFactory.toString());
+    	
         int[] array = arrayFactory.getInstance(20);
-        int min = Numbers.min(array);
-        int max = Numbers.max(array);
-        double avg = Numbers.avg(array);
+        
+		Number[] arrNumObj = new Number[array.length];
+		for(int i = 0; i < array.length; i++) {
+			arrNumObj[i] = array[i];
+		}
+		
+        double min = Numbers.min(arrNumObj);
+        double max = Numbers.max(arrNumObj);
+        double avg = Numbers.avg(arrNumObj);
+        System.out.println("Task1, avg = " + avg);
+        System.out.println("Task1, max = " + max);
+        System.out.println("Task1, mix = " + min);
         /*
          * TODO(Студент): Выполните задание №1
          *
@@ -55,4 +70,6 @@ public class Task1 implements Task {
          *    выполнения задания.
          */
     }
+
+    
 }

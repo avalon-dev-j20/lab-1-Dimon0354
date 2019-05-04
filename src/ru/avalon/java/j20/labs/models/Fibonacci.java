@@ -1,6 +1,9 @@
 package ru.avalon.java.j20.labs.models;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Модель получения последовательности чисел Фибоначчи.
@@ -17,13 +20,63 @@ import java.util.Iterator;
  * @see <a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D0%BB%D0%B0_%D0%A4%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8">Числа Фибоначчи</a>
  */
 public class Fibonacci implements Iterable<Integer> {
-
+	public Fibonacci() {	
+	}
+	
+	public int amotOfNumbers;
+	public List<Integer> fibNumbersColl;
+	
+	void FibonaciCreatorFarm() {
+		
+		if(amotOfNumbers > 0) {
+			
+			fibNumbersColl = new ArrayList<Integer>();
+			fibNumbersColl.add(0, 0);
+			fibNumbersColl.add(1, 1);
+			
+			for (int i = 2; i < amotOfNumbers; i++) {
+				
+				int curNumbForWriting = fibNumbersColl.get(i-1) + fibNumbersColl.get(i-2);
+				fibNumbersColl.add(i, curNumbForWriting);
+				
+			}
+		}
+	}
+	
+	public Fibonacci(int fibNumbersCnts) {
+		
+		this.amotOfNumbers = fibNumbersCnts;
+		FibonaciCreatorFarm();
+		
+	}
+	
+	public Fibonacci(int amotOfNumbers, List<Integer> fibNumbersColl) {
+		
+		this.amotOfNumbers = amotOfNumbers;
+		this.fibNumbersColl = fibNumbersColl;
+		FibonaciCreatorFarm();
+		
+	}
+	
+	public int FibonacciCollSum() {
+		
+		int result = 0;
+		Iterator<Integer> iterator = fibNumbersColl.iterator();
+		
+		while(iterator.hasNext()) {
+			int sum = 0;
+			sum += iterator.next();
+			result = sum;
+		}
+		return result;
+	}
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
-    private static class FibonacciIterator implements Iterator<Integer> {
+    private class FibonacciIterator implements Iterator<Integer> {
 
+    	int indexFib = 0;
         /**
          * Определяет, есть ли следующее значение
          * последовательности чисел Фибоначчи.
@@ -34,7 +87,11 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+        	
+        	if(indexFib < amotOfNumbers && fibNumbersColl.get(indexFib) != null) {
+        		return true;
+        	} else
+        		return false;
         }
 
         /**
@@ -45,7 +102,15 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+        	
+           if(hasNext() == false) {
+        	   
+        	   throw new NoSuchElementException();
+        	   
+           } else {
+        	   
+        	   return fibNumbersColl.get(indexFib++);
+           } 
         }
     }
 

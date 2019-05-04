@@ -3,8 +3,11 @@ package ru.avalon.java.j20.labs.tasks;
 import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Задание №5.
@@ -23,12 +26,19 @@ public class Task5 implements Task {
      */
     @Override
     public void run() {
-        final int[] array = arrayFactory.getInstance(20);
+        final int[] arrayMine = arrayFactory.getInstance(20);
+        
+        //Специально для заполнения List-a и Set-а создаем массив Integer-ов
+		Integer[] arrIntegerObjs = new Integer[arrayMine.length];
+		for(int i = 0; i < arrayMine.length; i++) {
+			arrIntegerObjs[i] = arrayMine[i];
+		}
+		
+        List<Integer> list = new ArrayList<>();
+        Set<Integer> set = new TreeSet<>();
 
-        List<Integer> list = null;
-
-        Set<Integer> set = null;
-
+        list.addAll(Arrays.asList(arrIntegerObjs));
+        set.addAll(Arrays.asList(arrIntegerObjs));
         /**
          * TODO(Студент): Выполните задание №5
          *
