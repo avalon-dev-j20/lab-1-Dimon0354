@@ -10,7 +10,7 @@ import ru.avalon.java.j20.labs.models.Point;
  */
 public class Task2 implements Task {
 	
-	public Point minePoint = new Point((float) 20, 5);
+	public Point minePoint = new Point((float) 20.5, 5);
 
     /**
      * {@inheritDoc}
@@ -18,7 +18,7 @@ public class Task2 implements Task {
     @Override
     public void run() {
     	
-    	double distBtwPoints = minePoint.distanceTo(new Point(4, 10));
+    	double distBtwPoints = minePoint.distanceTo(new Point(4.9, 10));
     	System.out.println("Task2.run(), distBtwPoints = " + distBtwPoints);
         /*
          * TODO(Студент): Выполнять задание №2

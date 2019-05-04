@@ -15,16 +15,9 @@ public class Task3 implements Task {
     @Override
     public void run() {
     	
-    	Fibonacci fibMine = new Fibonacci();
-    	int numbersOfFb = Fibonacci.getamotOfNumbers();
-    	int sumOfFb = 0;
+    	Fibonacci fibMine = new Fibonacci(20);
+    	int sumOfFb = fibMine.FibonacciCollSum();
 
-    	Fibonacci.setamotOfNumbers(20);
-    	
-    	for(int i : fibMine) {
-    		sumOfFb = sumOfFb + i;
-    	}
-    	
     	System.out.println("Task3.run(), sum of first 20y numbers = " + sumOfFb);
     	
         /*
